@@ -50,9 +50,10 @@ var_dump($tokenMetadata);
 // Validation (these will throw FacebookSDKException's when they fail)
 $tokenMetadata->validateAppId($conf["app_id"]); // Replace {app-id} with your app id
 
-if ($user = get_user("FACEBOOK", $tokenMetadata->getUserId())) {
+if ($user = get_user_id("FACEBOOK", $tokenMetadata->getUserId())) {
     echo '<h3>Nabbe Data</h3>';
-    var_dump($user);
+    echo "<p>User id: " . $user=get_user_uuid($user) . "</p>";
+    echo "<p>JWT: " . createJWT($user) . "</p>";
 } else {
     print "No nabbe found";
 }

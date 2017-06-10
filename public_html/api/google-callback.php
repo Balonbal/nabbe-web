@@ -45,9 +45,9 @@ if ($client->getAccessToken()) {
         <div class="data">
             <p>Here is the data from your Id Token:</p>
             <pre><?php var_export($token_data) ?></pre>
-            <?php if ($user = get_user("GOOGLE", $token_data["sub"])):?>
+            <?php if ($user = get_user_id("GOOGLE", $token_data["sub"])):?>
             <h3>Nabbe data</h3>
-            <p>User id: <?=$user?></p>
+            <p>User id: <?=$user=get_user_uuid($user)?></p>
             <p>Token: <?=createJWT($user)?></p>
             <?php else: ?>
             <h3>No nabbe found</h3>

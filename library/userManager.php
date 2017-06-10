@@ -19,7 +19,26 @@ function open_database() {
     return $mysqli;
 }
 
-function get_user($login_type, $user_id) {
+function get_user_uuid($user_id) {
+    if ($mysqli = open_database()) {
+        if ($statement = $mysqli->prepare("SELECT uuid FROM USERS WHERE id=?")) {
+            $statement->bind_param("i", $user_id);
+            $statement->execute();
+            $statement->bind_result($uuid);
+            if ($statement->fetch()) {
+                $result = $uuid;
+            } else {
+                $result = false;
+            }
+
+            $statement->close();
+            $mysqli->close();
+            return $result;
+        }
+    }
+}
+
+function get_user_id($login_type, $user_id) {
     if ($mysqli = open_database()) {
         if ($statement = $mysqli->prepare("SELECT user_id FROM USER_IDS WHERE id_type=? AND service_id=?")) {
             //User id has to be a string as google subs are greater than MAX_INT
