@@ -3,6 +3,7 @@ session_start();
 require_once dirname(realpath(__FILE__)) . "/../../vendor/autoload.php";
 require_once dirname(realpath(__FILE__)) . "/../../library/config/configuration.php";
 require_once LIBRARY_PATH . "/userManager.php";
+require_once LIBRARY_PATH . "/jwtManager.php";
 $conf = json_decode(file_get_contents(dirname(realpath(__FILE__)) . "/../../library/config/fb.json"), true);
 
 $fb = new Facebook\Facebook($conf);
@@ -53,7 +54,9 @@ $tokenMetadata->validateAppId($conf["app_id"]); // Replace {app-id} with your ap
 if ($user = get_user_id("FACEBOOK", $tokenMetadata->getUserId())) {
     echo '<h3>Nabbe Data</h3>';
     echo "<p>User id: " . $user=get_user_uuid($user) . "</p>";
-    echo "<p>JWT: " . createJWT($user) . "</p>";
+    echo "<p>JWT: " . $jwt=createJWT($user) . "</p>";
+    $_SESSION["nabbe-jwt"] = $jwt;
+    header("Location: http://" . $_SERVER["HTTP_HOST"]);
 } else {
     print "No nabbe found";
 }
@@ -76,8 +79,7 @@ echo '<h3>Long-lived</h3>';
 var_dump($accessToken->getValue());
 }
 
-$_SESSION['fb_access_token'] = (string) $accessToken;
+
 
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
-//header('Location: https://example.com/members.php');

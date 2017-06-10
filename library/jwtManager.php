@@ -24,3 +24,10 @@ function createJWT($user) {
     $jwt = \Firebase\JWT\JWT::encode($data, $key, "HS512");
     return json_encode(["jwt" => $jwt]);
 }
+
+function decode_JWT($jwt) {
+    $nabbe = get_config();
+
+    $key = base64_decode($nabbe->jwt->key);
+    return \Firebase\JWT\JWT::decode($jwt, $key, array("HS512"));
+}

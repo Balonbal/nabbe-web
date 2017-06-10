@@ -13,6 +13,7 @@ $client->setScopes(["email"]);
 
 if(isset($_REQUEST["logout"]))
     unset($_SESSION["id_token_token"]);
+    unset($_SESSION["nabbe-jwt"]);
 if (isset($_GET["code"])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET["code"]);
     $client->setAccessToken($token);
@@ -48,7 +49,10 @@ if ($client->getAccessToken()) {
             <?php if ($user = get_user_id("GOOGLE", $token_data["sub"])):?>
             <h3>Nabbe data</h3>
             <p>User id: <?=$user=get_user_uuid($user)?></p>
-            <p>Token: <?=createJWT($user)?></p>
+            <p>Token: <?=$jwt=createJWT($user)?></p>
+            <?php $_SESSION["nabbe-jwt"] = $jwt;
+                header("Location: http://" . $_SERVER["HTTP_HOST"]);
+                ?>
             <?php else: ?>
             <h3>No nabbe found</h3>
             <?php endif ?>
