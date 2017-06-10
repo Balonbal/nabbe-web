@@ -1,0 +1,5 @@
+library/config/*.json
+vendor/
+public_html/bootstrap/
+public_html/font-awesome/
+.idea/
