@@ -3,6 +3,7 @@ session_start();
 require_once dirname(realpath(__FILE__)) . "/../../vendor/autoload.php";
 require_once dirname(realpath(__FILE__)) . "/../../library/config/configuration.php";
 require_once LIBRARY_PATH . "/userManager.php";
+require_once LIBRARY_PATH . "/jwtManager.php";
 $redirectUri = "http://" . $_SERVER["HTTP_HOST"] . "/api/google-callback.php";
 
 $client = new Google_Client();
@@ -46,7 +47,8 @@ if ($client->getAccessToken()) {
             <pre><?php var_export($token_data) ?></pre>
             <?php if ($user = get_user("GOOGLE", $token_data["sub"])):?>
             <h3>Nabbe data</h3>
-            <p><?=$user?></p>
+            <p>User id: <?=$user?></p>
+            <p>Token: <?=createJWT($user)?></p>
             <?php else: ?>
             <h3>No nabbe found</h3>
             <?php endif ?>

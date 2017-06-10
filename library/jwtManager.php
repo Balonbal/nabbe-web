@@ -5,7 +5,7 @@ require_once dirname(realpath(__FILE__)) . "/config/configuration.php";
 function createJWT($user) {
     $nabbe = get_config();
 
-    $tokenId = base64_encode(random_bytes(32));
+    $tokenId = base64_encode(openssl_random_pseudo_bytes(32));
     $issuedAt = time();
     $notBefore = $issuedAt + $nabbe->jwt->nbf;
     $expiration = $notBefore + $nabbe->jwt->exp;

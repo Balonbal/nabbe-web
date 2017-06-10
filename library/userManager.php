@@ -20,29 +20,22 @@ function open_database() {
 }
 
 function get_user($login_type, $user_id) {
-    //$user_id = (int) $user_id;
-    print "Searching for user " . $user_id;
     if ($mysqli = open_database()) {
-        $login_type = $mysqli->real_escape_string($login_type);
-        print "\n$login_type";
-        if ($statement = $mysqli->prepare("SELECT * FROM USER_IDS WHERE id_type='GOOGLE' AND service_id=?")) {
-            $statement->bind_param("s", $user_id);
+        if ($statement = $mysqli->prepare("SELECT user_id FROM USER_IDS WHERE id_type=? AND service_id=?")) {
+            //User id has to be a string as google subs are greater than MAX_INT
+            $statement->bind_param("ss", $login_type, $user_id);
             $statement->execute();
-            $statement->bind_result($id, $a, $b, $c);
-            print "$a\n";
-            while ($statement->fetch()) {
-                var_dump($id);
+            $statement->bind_result($id);
+            if ($statement->fetch()) {
                 $statement->close();
                 $mysqli->close();
                 return $id;
             }
-            print "$id\n";
-            print($statement->error);
             $statement->close();
             $mysqli->close();
+            //No user found
             return false;
         }
-        print "NOPE";
     }
     throw Exception("MYSQL error");
 }
