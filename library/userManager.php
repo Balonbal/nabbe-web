@@ -60,6 +60,31 @@ function get_user_id($login_type, $user_id) {
     throw new Exception("MYSQL error");
 }
 
+function createUser($service_type, $service_id, $username) {
+    if ($mysqli = open_database()) {
+        $user = $mysqli->prepare("INSERT INTO USERS (user_name, uuid) VALUES (?, ?)");
+        $user->bind_param("ss", $username, $username);
+        $user->execute();
+        $user_id = $user->insert_id;
+        $user->close();
+
+        $id = $mysqli->prepare("INSERT INTO USER_IDS (user_id, id_type, service_id) VALUES (?, ?, ?)");
+        $id->bind_param("iss", $user_id, $service_type, $service_id);
+        $id->execute();
+        $id->close();
+
+        $mysqli->close();
+
+        return $username;
+    }
+
+    throw new Exception("MYSQL Error");
+}
+
+function valid_username($username) {
+    return preg_match("/^\w{1,16}$/", $username) != false;
+}
+
 function username_available($username) {
     $result = false;
     if ($mysqli = open_database()) {
@@ -76,3 +101,4 @@ function username_available($username) {
 
     return $result;
 }
+
