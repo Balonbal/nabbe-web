@@ -22,6 +22,9 @@
                 You are not logged in
                 <?php endif ?>
             </p>
+            <?php if (isset($_SESSION["nabbe-jwt"])): ?>
+            <form action="http://<?=$_SERVER["HTTP_HOST"]?>/logout.php"><button type="submit" class="btn btn-info navbar-btn navbar-right">Log out</button></form>
+            <?php endif ?>
         </div>
     </div>
 </nav>
