@@ -2,15 +2,14 @@
 session_start();
 include_once realpath(dirname(__FILE__)) . "/../library/config/configuration.php";
 include_once TEMPLATES_PATH . "/header.php";
-if (isset($_SESSION["nabbe-jwt"])) {?>
+if (isset($_SESSION["nabbe-jwt"])):?>
 <script type="text/javascript">
     var store = store || {};
 
     //You can now make authorized requests in pure js, nice :)
     store.JWT = <?=$_SESSION["nabbe-jwt"]->jwt?>;
 </script>
-<?php}
-?>
+<?php endif; ?>
 <body>
 <?php include_once TEMPLATES_PATH . "/navbar.php"; ?>
 <div id="content">
