@@ -36,6 +36,7 @@ function get_user_uuid($user_id) {
             return $result;
         }
     }
+    throw new Exception("MYSQL Error");
 }
 
 function get_user_id($login_type, $user_id) {
@@ -56,5 +57,22 @@ function get_user_id($login_type, $user_id) {
             return false;
         }
     }
-    throw Exception("MYSQL error");
+    throw new Exception("MYSQL error");
+}
+
+function username_available($username) {
+    $result = false;
+    if ($mysqli = open_database()) {
+        if ($statement = $mysqli->prepare("SELECT id FROM USERS WHERE uuid=? LIMIT 1")) {
+            $statement->bind_param("s", $username);
+            $statement->execute();
+            if (!$statement->fetch()) {
+                $result = true;
+            }
+            $statement->close();
+            $mysqli->close();
+        }
+    }
+
+    return $result;
 }

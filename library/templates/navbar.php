@@ -1,4 +1,8 @@
-<?php include_once LIBRARY_PATH . "/jwtManager.php"; ?>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include_once LIBRARY_PATH . "/jwtManager.php"; ?>
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
