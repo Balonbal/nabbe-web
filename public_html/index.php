@@ -7,7 +7,10 @@ if (isset($_SESSION["nabbe-jwt"])):?>
     var store = store || {};
 
     //You can now make authorized requests in pure js, nice :)
-    store.JWT = <?=$_SESSION["nabbe-jwt"]->jwt?>;
+    store.JWT = <?=$_SESSION["nabbe-jwt"]?>;
+    $.ajaxSetup({
+        headers: {"Authorization": "Bearer " + store.JWT.jwt}
+    });
 </script>
 <?php endif; ?>
 <body>
