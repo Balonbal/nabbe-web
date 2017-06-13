@@ -10,7 +10,7 @@ include_once TEMPLATES_PATH . "/header.php";
         <p>
             <?php if (isset($_SESSION["nabbe-jwt"])): ?>
                 <h3>
-                    Stats for <p id="oldUsername"><?=decode_JWT(json_decode($_SESSION["nabbe-jwt"])->jwt)->sub;?></p>
+                    Stats for <span id="oldUsername"><?=decode_JWT(json_decode($_SESSION["nabbe-jwt"])->jwt)->sub;?></span>
                 </h3>
             <?php else: ?>
             You are not logged in
