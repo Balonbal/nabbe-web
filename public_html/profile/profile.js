@@ -34,12 +34,3 @@ btnChangeUN.addEventListener('click', function (e) {
 		}
 	}
 });
-
-btnChangePW.addEventListener('click', function (e) {
-	
-	if (confirm("Are you sure you want to change your password?")) {
-    	console.log("Change password");
-	} else {
-	    console.log("dont change password");
-	}
-});
