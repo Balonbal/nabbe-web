@@ -3,19 +3,58 @@ include_once realpath(dirname(__FILE__)) . "/../../library/config/configuration.
 include_once TEMPLATES_PATH . "/header.php";
 ?>
 <body>
-<?php include_once TEMPLATES_PATH . "/navbar.php"; ?>,
+<?php include_once TEMPLATES_PATH . "/navbar.php"; ?>
 
 <div id="content">
     <div class="container"> 
-        <h3>
-            <strong>Nabbe.io</strong> is a game created by:<br>
-        </h3>
-        <ul class="list-group">
-            <li class="list-group-item">Olav Bech Bråten - our master</li>
-            <li class="list-group-item">Tinus Flagstad - our slave</li>
-            <li class="list-group-item">Aksel Slettemark - backend master</li>
-            <li class="list-group-item">Håkon Wardeberg - our krenger-kreiger</li>
-        </ul>
+        <div class="row">
+            <h3 class="text-center">
+                <strong>Nabbe.io</strong> is a game created by:<br>
+            </h3>
+            <div class="col-sm-3 col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Olav Bech Bråten</h3>
+                    </div>
+                        <div class="panel-body">
+                        Our master
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Tinus Flagstad</h3>
+                    </div>
+                        <div class="panel-body">
+                        our slave
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Aksel Slettemark</h3>
+                    </div>
+                        <div class="panel-body">
+                        backend master
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Håkon Wardeberg</h3>
+                    </div>
+                        <div class="panel-body">
+                        our krenger-kreiger
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
