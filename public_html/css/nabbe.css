@@ -4,3 +4,9 @@ footer {
     font-weight: bold;
     font-size: .8em;
 }
+
+#divSettingsBoxes {
+	/* Made by Tinus */
+	margin-top: 2%;
+	margin-bottom: 2%;
+}

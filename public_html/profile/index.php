@@ -9,7 +9,9 @@ include_once TEMPLATES_PATH . "/header.php";
     <div class="container"> 
         <p>
             <?php if (isset($_SESSION["nabbe-jwt"])): ?>
-                Stats for <?=decode_JWT(json_decode($_SESSION["nabbe-jwt"])->jwt)->sub;?>
+                <h3>
+                    Stats for <p id="oldUsername"><?=decode_JWT(json_decode($_SESSION["nabbe-jwt"])->jwt)->sub;?></p>
+                </h3>
             <?php else: ?>
             You are not logged in
             <?php endif ?>
@@ -28,14 +30,22 @@ include_once TEMPLATES_PATH . "/header.php";
                 You tied against <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 16-16
             </li>
         </ul>
-        <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default">Change Password</button>
-            <button type="button" class="btn btn-default">Change Username</button>
-            <button type="button" class="btn btn-default">Delete Account</button>
+
+        <div id="divSettingsBoxes">
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon2">@</span>
+                <input type="text" class="form-control" placeholder="New Username" aria-describedby="sizing-addon2" id="inputUsername">
+            </div>
+            <button type="button" class="btn btn-default" id="btnChangeUN">Change Username</button>
+        </div>
+
+        <div id="divSettingsBoxes">
+            <button type="button" class="btn btn-danger" id="btnDelete">Delete Account</button>
         </div>
     </div>
 </div>
 
+<script src="profile.js"></script>
 <?php include_once TEMPLATES_PATH . "/footer.php"; ?>
 </body>
 </html>
