@@ -33,15 +33,24 @@ include_once TEMPLATES_PATH . "/header.php";
                 <div class="col-sm-6 col-xs-12">
                     <h3> Account Settings </h3>
                     <div id="divSettingsBoxes">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="sizing-addon2">@</span>
-                            <input type="text" class="form-control" placeholder="New Username" aria-describedby="sizing-addon2" id="inputUsername">
+                        <!-- Probably have to change new_user with change_user.php -->
+                        <form action="../new_user.php" method="POST" id="newUserForm" class="form-horizontal">
+                        <div class="form-group has-feedback">
+                                <input type="text" maxlength="16" minlength="1" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users.php" class="form-control" name="username" placeholder="New Username" required>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <div class="help-block with-errors col-sm-offset-2">Please pick a alphanumeric username (1-16 chars)</div>
                         </div>
-                        <button type="button" class="btn btn-default" id="btnChangeUN">Change Username</button>
-                    </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-10">
+                                <button type="submit" class="btn btn-success">Change Username</button>
+                            </div>
+                        </div>
 
                     <div id="divSettingsBoxes">
-                        <button type="button" class="btn btn-danger" id="btnDelete">Delete Account</button>
+                        <div class="col-sm-offset-4 col-sm-10">
+                            <button type="button" class="btn btn-danger" id="btnDelete">Delete Account</button>
+                        </div>
                     </div>
                 </div>
             <?php else: ?>
