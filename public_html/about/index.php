@@ -6,16 +6,16 @@ include_once TEMPLATES_PATH . "/header.php";
 <?php include_once TEMPLATES_PATH . "/navbar.php"; ?>,
 
 <div id="content">
-    <div class="container">            
-        <div class="col-md-2 col-md-offset-5">
-            <p>
-                <strong>Nabbe.io</strong> is a game created by:<br>
-                Olav Bech Bråten<br>
-                Tinus Flagstad<br>
-                Aksel Slettemark<br>
-                Håkon Wardeberg<br>
-            </p>
-        </div>
+    <div class="container"> 
+        <h3>
+            <strong>Nabbe.io</strong> is a game created by:<br>
+        </h3>
+        <ul class="list-group">
+            <li class="list-group-item">Olav Bech Bråten - our master</li>
+            <li class="list-group-item">Tinus Flagstad - our slave</li>
+            <li class="list-group-item">Aksel Slettemark - backend master</li>
+            <li class="list-group-item">Håkon Wardeberg - our krenger-kreiger</li>
+        </ul>
     </div>
 </div>
 
