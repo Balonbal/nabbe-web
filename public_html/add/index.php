@@ -23,21 +23,15 @@ include_once TEMPLATES_PATH . "/header.php";
             <div class="col-sm-6 col-xs-12">
             <h3>Friend list</h3>
                 <div class="panel panel-default">
-                    <ul class="list-group">
-                        <li class="list-group-item">Sly
-                        <a href="nabbe.gabeorama.org/sly/delete/"><span class="glyphicon glyphicon-trash" style="float: right"></span></a>
-                        </li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                    <ul class="list-group" id="currentFriendList">
+                        
                     </ul>
                 </div>
             </div>
         </div><!-- /.row -->
     </div>
 </div>
-
+<script src="getAndDeleteCurFriends.js"></script>
 <?php include_once TEMPLATES_PATH . "/footer.php"; ?>
 </body>
 </html>
