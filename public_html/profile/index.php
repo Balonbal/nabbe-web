@@ -19,13 +19,13 @@ include_once TEMPLATES_PATH . "/header.php";
                 <p>That is a x/y * 100 % winrate!</p>
                 <p>Previous 10 matches:</p>
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-success">
+                    <li class="list-group-item list-group-item-success text-center">
                         You defeated <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 16-2
                     </li>
-                    <li class="list-group-item list-group-item-danger">
+                    <li class="list-group-item list-group-item-danger text-center">
                         You lost against <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 13-16
                     </li>
-                    <li class="list-group-item list-group-item-warning">
+                    <li class="list-group-item list-group-item-warning text-center">
                         You tied against <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 16-16
                     </li>
                 </ul>
