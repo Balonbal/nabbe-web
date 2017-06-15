@@ -1,0 +1,8 @@
+{
+    "require": {
+        "firebase/php-jwt": "^4.0",
+        "facebook/graph-sdk": "^5.5",
+        "twbs/bootstrap": "^3.3",
+        "google/apiclient": "^2.1"
+    }
+}
