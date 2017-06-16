@@ -5,6 +5,9 @@ defined("LIBRARY_PATH")
 defined("TEMPLATES_PATH")
     or define("TEMPLATES_PATH", LIBRARY_PATH . "/templates");
 
+defined("PAGES_PATH")
+    or define("PAGES_PATH", LIBRARY_PATH . "/pages");
+
 function get_config($name = "nabbe") {
     $name = substr($name, -4) === "json" ? $name : $name . ".json";
     return json_decode(file_get_contents(LIBRARY_PATH . "/config/" . $name));
