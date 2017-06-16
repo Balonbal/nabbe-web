@@ -1,29 +1,25 @@
 <?php
+session_start();
 include_once realpath(dirname(__FILE__)) . "/../library/config/configuration.php";
 include_once TEMPLATES_PATH . "/header.php";
+//Avoid unexpected behaviour
+unset($_SESSION["service"]);
+unset($_SESSION["user_id"]);
 ?>
 <body>
 <?php include_once TEMPLATES_PATH . "/navbar.php"; ?>
 <div id="content">
+    <?php if (isset($_SESSION["nabbe-jwt"])):?>
+        ohai there <?=$_SESSION["nabbe-jwt"]?>
+    <?php else: ?>
     <div class="container">
         <div class="row">
-            <div class="col-sm-offset-4 col-sm-4 social-buttons">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Please log in to continue
-                    </div>
-                    <div class="panel-body">
-                        <a class="btn btn-large btn-block btn-social btn-facebook" href="<?php include_once LIBRARY_PATH . "/fb-login.php"; ?>">
-                            <span class="fa fa-facebook"></span>Continue with Facebook
-                        </a>
-                        <a class="btn btn-large btn-block btn-social btn-google" href="<?php include_once LIBRARY_PATH . "/google-login.php"; ?>">
-                            <span class="fa fa-google"></span>Contiue with Google
-                        </a>
-                    </div>
-                </div>
+            <div class="col-md-offset-3 col-md-6">
+                <?php include_once TEMPLATES_PATH . "/socialButtons.php" ?>
             </div>
         </div>
     </div>
+    <?php endif ?>
 </div>
 <?php include_once TEMPLATES_PATH . "/footer.php"; ?>
 </body>

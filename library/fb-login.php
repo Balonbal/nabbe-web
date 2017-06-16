@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once dirname(realpath(__FILE__)) . "/../vendor/autoload.php";
 $conf = json_decode(file_get_contents(dirname(realpath(__FILE__)) . "/config/fb.json"), true);
 

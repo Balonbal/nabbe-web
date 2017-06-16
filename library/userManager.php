@@ -19,30 +19,86 @@ function open_database() {
     return $mysqli;
 }
 
-function get_user($login_type, $user_id) {
-    //$user_id = (int) $user_id;
-    print "Searching for user " . $user_id;
+function get_user_uuid($user_id) {
     if ($mysqli = open_database()) {
-        $login_type = $mysqli->real_escape_string($login_type);
-        print "\n$login_type";
-        if ($statement = $mysqli->prepare("SELECT * FROM USER_IDS WHERE id_type='GOOGLE' AND service_id=?")) {
-            $statement->bind_param("s", $user_id);
+        if ($statement = $mysqli->prepare("SELECT uuid FROM USERS WHERE id=?")) {
+            $statement->bind_param("i", $user_id);
             $statement->execute();
-            $statement->bind_result($id, $a, $b, $c);
-            print "$a\n";
-            while ($statement->fetch()) {
-                var_dump($id);
+            $statement->bind_result($uuid);
+            if ($statement->fetch()) {
+                $result = $uuid;
+            } else {
+                $result = false;
+            }
+
+            $statement->close();
+            $mysqli->close();
+            return $result;
+        }
+    }
+    throw new Exception("MYSQL Error");
+}
+
+function get_user_id($login_type, $user_id) {
+    if ($mysqli = open_database()) {
+        if ($statement = $mysqli->prepare("SELECT user_id FROM USER_IDS WHERE id_type=? AND service_id=?")) {
+            //User id has to be a string as google subs are greater than MAX_INT
+            $statement->bind_param("ss", $login_type, $user_id);
+            $statement->execute();
+            $statement->bind_result($id);
+            if ($statement->fetch()) {
                 $statement->close();
                 $mysqli->close();
                 return $id;
             }
-            print "$id\n";
-            print($statement->error);
             $statement->close();
             $mysqli->close();
+            //No user found
             return false;
         }
-        print "NOPE";
     }
-    throw Exception("MYSQL error");
+    throw new Exception("MYSQL error");
 }
+
+function createUser($service_type, $service_id, $username) {
+    if ($mysqli = open_database()) {
+        $user = $mysqli->prepare("INSERT INTO USERS (user_name, uuid) VALUES (?, ?)");
+        $user->bind_param("ss", $username, $username);
+        $user->execute();
+        $user_id = $user->insert_id;
+        $user->close();
+
+        $id = $mysqli->prepare("INSERT INTO USER_IDS (user_id, id_type, service_id) VALUES (?, ?, ?)");
+        $id->bind_param("iss", $user_id, $service_type, $service_id);
+        $id->execute();
+        $id->close();
+
+        $mysqli->close();
+
+        return $username;
+    }
+
+    throw new Exception("MYSQL Error");
+}
+
+function valid_username($username) {
+    return preg_match("/^\w{1,16}$/", $username) != false;
+}
+
+function username_available($username) {
+    $result = false;
+    if ($mysqli = open_database()) {
+        if ($statement = $mysqli->prepare("SELECT id FROM USERS WHERE uuid=? LIMIT 1")) {
+            $statement->bind_param("s", $username);
+            $statement->execute();
+            if (!$statement->fetch()) {
+                $result = true;
+            }
+            $statement->close();
+            $mysqli->close();
+        }
+    }
+
+    return $result;
+}
+
