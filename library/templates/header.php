@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="http://<?= $_SERVER["HTTP_HOST"] ?>/js/network.js"></script>
-    <?php if (isset($page) && file_exists(LIBRARY_PATH . "../public_html/js/" . $page . ".js")):?>
+    <?php if (isset($page) && file_exists(LIBRARY_PATH . "/../public_html/js/" . $page . ".js")):?>
     <script src="http://<?=$_SERVER["HTTP_HOST"]?>/js/<?=$page?>.js"></script>
     <?php endif?>
     <?php if (isset($_SESSION["nabbe-jwt"])):?>
