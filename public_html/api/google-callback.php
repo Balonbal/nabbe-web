@@ -43,19 +43,16 @@ if ($client->getAccessToken()) {
             <a class='login' href='<?= $authUrl ?>'>Connect Me!</a>
         </div>
     <?php else: ?>
-        <div class="data">
-            <p>Here is the data from your Id Token:</p>
-            <pre><?php var_export($token_data) ?></pre>
-            <?php if ($user = get_user_id("GOOGLE", $token_data["sub"])):?>
-            <h3>Nabbe data</h3>
-            <p>User id: <?=$user=get_user_uuid($user)?></p>
-            <p>Token: <?=$jwt=createJWT($user)?></p>
-            <?php $_SESSION["nabbe-jwt"] = $jwt;
-                header("Location: http://" . $_SERVER["HTTP_HOST"]);
-                ?>
-            <?php else: ?>
-            <h3>No nabbe found</h3>
-            <?php endif ?>
-        </div>
-    <?php endif ?>
+        <?php if ($user = get_user_id("GOOGLE", $token_data["sub"])):
+            $user=get_user_uuid($user);
+            $jwt=createJWT($user);
+            $_SESSION["nabbe-jwt"] = $jwt;
+            header("Location: http://" . $_SERVER["HTTP_HOST"]);
+        else:
+            $_SESSION["service"] = "GOOGLE";
+            $_SESSION["user_id"] = $token_data["sub"];
+            //Redirect to sign in page
+            header("Location: http://" . $_SERVER["HTTP_HOST"] . "/new_user.php");
+        endif;
+    endif ?>
 </div>
