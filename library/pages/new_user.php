@@ -32,8 +32,6 @@ if (isset($_POST["username"]) &&
     die();
 }
 ?>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js'></script>
-    <script type="text/javascript" src="http://<?=$_SERVER["HTTP_HOST"]?>/js/new_user.js"></script>
     <div id="content">
         <div class="container">
             <div class="row">

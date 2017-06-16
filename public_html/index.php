@@ -2,10 +2,6 @@
 session_start();
 include_once realpath(dirname(__FILE__)) . "/../library/config/configuration.php";
 
-//Avoid unexpected behaviour
-unset($_SESSION["service"]);
-unset($_SESSION["user_id"]);
-
 $page = "index"; //Default
 
 if (isset($_REQUEST["page"])) {
