@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	let friends = ["Sly","Aksei","hakun","ice_poseidon","me","myself","I"];
-	const currentFriendList = document.getElementById("currentFriendList");
+	const currentFriendList = $("#currentFriendList");
 
 	fetchUsers();
 	putFriendsInList();
@@ -12,30 +12,19 @@ $(document).ready(function() {
 
 	function putFriendsInList() {
 		for(let i = 0; i < friends.length; i++) {
-			const li = document.createElement("li");
-			li.innerHTML=friends[i];
-			li.setAttribute("class", "list-group-item");
-
-			const a = document.createElement("a");
-	    	a.href = "javascript:void(0)";
-
-	    	const span = document.createElement("span");
-	    	span.setAttribute("class", "glyphicon glyphicon-trash");
-		    span.setAttribute("style", "float:right");
-	    	a.appendChild(span);
-
-
-	    	li.appendChild(a);
-			currentFriendList.appendChild(li);
+			currentFriendList.append(
+				$('<li>').attr('class','list-group-item').text(friends[i]).append(
+					$('<a>').attr('href','javascript:void(0)').append(
+						$('<span>').attr('class', 'glyphicon glyphicon-trash').attr('style', 'float:right')
+			)));
 		}
 	}
-
-	const deleteFriendBtns = document.querySelectorAll(".glyphicon-trash");
+	let deleteFriendBtns = $(".glyphicon-trash")
 
 	for (let i = 0; i < deleteFriendBtns.length; i++) {
 		deleteFriendBtns[i].addEventListener("click", function() {
 			console.log("deleted " + deleteFriendBtns[i].parentNode.parentNode.innerHTML);
-			currentFriendList.removeChild(deleteFriendBtns[i].parentNode.parentNode);
+			deleteFriendBtns[i].parentNode.parentNode.remove();
 			//Ofc you also have to delete this on the server somehow.
 		});
 	}
