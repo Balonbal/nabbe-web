@@ -41,15 +41,17 @@
                 <div id="divSettingsBoxes">
                     <!-- Probably have to change new_user with change_user.php -->
                     <form action="http://<?=$_SERVER["HTTP_HOST"]?>/api/profile.php?change=username" method="POST" id="nameChangeForm" class="form-horizontal">
-                        <label class="control-label col-sm-2">Change display name:</label>
-                        <div class="input-group col-sm-10">
-                            <input type="text" maxlength="16" minlength="1" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users.php" class="form-control" name="username" placeholder="New Username" required>
-                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-sm-4">Change display name:</label>
+                            <div class="input-group col-sm-8">
+                                <input type="text" maxlength="16" minlength="1" data-not-equals="username" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users.php" class="form-control" name="username" placeholder="New Username" required>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                            <div class="help-block with-errors col-sm-offset-4">Please pick a alphanumeric username (1-16 chars)</div>
                         </div>
-                        <div class="help-block with-errors col-sm-offset-2">Please pick a alphanumeric username (1-16 chars)</div>
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-10">
-                                <button type="button" class="btn btn-success">Change Username</button>
+                                <button type="submit" class="btn btn-success">Change Username</button>
                             </div>
                         </div>
                     </form>
