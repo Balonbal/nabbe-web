@@ -4,7 +4,7 @@ include_once realpath(dirname(__FILE__)) . "/../library/config/configuration.php
 
 $page = "index"; //Default
 
-if (isset($_REQUEST["page"])) {
+if (isset($_REQUEST["page"]) && !empty($_REQUEST["page"])) {
     $page=$_REQUEST["page"];
 }
 
