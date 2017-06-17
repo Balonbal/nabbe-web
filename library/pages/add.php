@@ -1,10 +1,3 @@
-<?php
-include_once realpath(dirname(__FILE__)) . "/../../library/config/configuration.php";
-include_once TEMPLATES_PATH . "/header.php";
-?>
-<body>
-<?php include_once TEMPLATES_PATH . "/navbar.php"; ?>
-
 <div id="content">
     <div class="container"> 
         <div class="row">
@@ -31,7 +24,3 @@ include_once TEMPLATES_PATH . "/header.php";
         </div><!-- /.row -->
     </div>
 </div>
-<script src="getAndDeleteCurFriends.js"></script>
-<?php include_once TEMPLATES_PATH . "/footer.php"; ?>
-</body>
-</html>
