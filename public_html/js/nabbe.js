@@ -11,10 +11,13 @@ $(document).ready(function () {
     }
 });
 
-function sendRequest(url, callback) {
+function sendRequest(url, callback, error) {
     $.ajax({
         "url" : url,
-        "success": callback
+        "success": callback,
+        "error": (error ? error : function (err) {
+                console.log(err);
+            })
     })
 }
 
