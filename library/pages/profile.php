@@ -2,22 +2,39 @@
     <div class="container">
         <div class="row">
             <?php if (isset($_SESSION["nabbe-jwt"])): ?>
-            <div class="col-sm-6 col-xs-12">
-                <h3>Stats for <span id="oldUsername" class="username"></span></h3>
-                <p>You have in total x wins and y defeats</p>
-                <p>That is a x/y * 100 % winrate!</p>
-                <p>Previous 10 matches:</p>
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-success text-center">
-                        You defeated <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 16-2
-                    </li>
-                    <li class="list-group-item list-group-item-danger text-center">
-                        You lost against <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 13-16
-                    </li>
-                    <li class="list-group-item list-group-item-warning text-center">
-                        You tied against <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 16-16
-                    </li>
-                </ul>
+            <div class="col-sm-6 col-xs-12 text-center">
+                <h1>Stats for <span id="oldUsername" class="username"></span></h1>
+                <p>You have in total <strong id="wins" class="text-success text">100000</strong> wins and <strong id="losses" class="text-danger">0</strong> defeats</p>
+                <p>That is a <strong id="winrate" class="text-info">\infinity</strong>% winrate!</p>
+                <h3>Match History</h3>
+                <div class="list-group" id="match-history">
+                    <div class="list-group-item list-group-item-success text-center">
+                        <div class="row">
+                            <div class="col-sm-9">You defeated <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 16-2</div>
+                            <small class="col-sm-3">Just now</small>
+                        </div>
+                    </div>
+                    <div class="list-group-item list-group-item-danger text-center">
+                        <div class="row">
+                            <div class="col-sm-9">You lost against <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 13-16</div>
+                            <small class="text-muted p-2 col-sm-3">3 minutes ago</small>
+                        </div>
+                    </div>
+                    <div class="list-group-item list-group-item-warning text-center">
+                        <div class="row">
+                            <div class="col-sm-9">You tied against <a href="http://nabbe.gabeorama.org/profile/sly">sly</a> with a score of 16-16</div>
+                            <small class="col-sm-3">A week ago</small>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="text-center">
+                    <ul class="pagination" id="match-history-pagination">
+                        <li class="disabled" id="match-history-prev"><a href="#"><span class="fa fa-arrow-left"></span> Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#" id="match-history-next">Next <span class="fa fa-arrow-right"></span></a></li>
+                    </ul>
+                </div>
             </div>
             <div class="col-sm-6 col-xs-12">
                 <h3> Account Settings </h3>
