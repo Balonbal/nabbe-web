@@ -3,6 +3,7 @@ session_start();
 require_once dirname(realpath(__FILE__)) . "/../../vendor/autoload.php";
 require_once dirname(realpath(__FILE__)) . "/../../library/config/configuration.php";
 require_once LIBRARY_PATH . "/userManager.php";
+require_once LIBRARY_PATH . "/jwtManager.php";
 $redirectUri = "http://" . $_SERVER["HTTP_HOST"] . "/api/google-callback.php";
 
 $client = new Google_Client();
@@ -12,6 +13,7 @@ $client->setScopes(["email"]);
 
 if(isset($_REQUEST["logout"]))
     unset($_SESSION["id_token_token"]);
+    unset($_SESSION["nabbe-jwt"]);
 if (isset($_GET["code"])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET["code"]);
     $client->setAccessToken($token);
@@ -41,15 +43,16 @@ if ($client->getAccessToken()) {
             <a class='login' href='<?= $authUrl ?>'>Connect Me!</a>
         </div>
     <?php else: ?>
-        <div class="data">
-            <p>Here is the data from your Id Token:</p>
-            <pre><?php var_export($token_data) ?></pre>
-            <?php if ($user = get_user("GOOGLE", $token_data["sub"])):?>
-            <h3>Nabbe data</h3>
-            <p><?=$user?></p>
-            <?php else: ?>
-            <h3>No nabbe found</h3>
-            <?php endif ?>
-        </div>
-    <?php endif ?>
+        <?php if ($user = get_user_id("GOOGLE", $token_data["sub"])):
+            $user=get_user_uuid($user);
+            $jwt=createJWT($user);
+            $_SESSION["nabbe-jwt"] = $jwt;
+            header("Location: http://" . $_SERVER["HTTP_HOST"]);
+        else:
+            $_SESSION["service"] = "GOOGLE";
+            $_SESSION["user_id"] = $token_data["sub"];
+            //Redirect to sign in page
+            header("Location: http://" . $_SERVER["HTTP_HOST"] . "/new_user/");
+        endif;
+    endif ?>
 </div>

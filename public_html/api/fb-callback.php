@@ -3,6 +3,7 @@ session_start();
 require_once dirname(realpath(__FILE__)) . "/../../vendor/autoload.php";
 require_once dirname(realpath(__FILE__)) . "/../../library/config/configuration.php";
 require_once LIBRARY_PATH . "/userManager.php";
+require_once LIBRARY_PATH . "/jwtManager.php";
 $conf = json_decode(file_get_contents(dirname(realpath(__FILE__)) . "/../../library/config/fb.json"), true);
 
 $fb = new Facebook\Facebook($conf);
@@ -35,26 +36,25 @@ echo 'Bad request';
 exit;
 }
 
-// Logged in
-echo '<h3>Access Token</h3>';
-var_dump($accessToken->getValue());
-
 // The OAuth 2.0 client handler helps us manage access tokens
 $oAuth2Client = $fb->getOAuth2Client();
 
 // Get the access token metadata from /debug_token
 $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-echo '<h3>Metadata</h3>';
-var_dump($tokenMetadata);
 
 // Validation (these will throw FacebookSDKException's when they fail)
 $tokenMetadata->validateAppId($conf["app_id"]); // Replace {app-id} with your app id
 
-if ($user = get_user("FACEBOOK", $tokenMetadata->getUserId())) {
-    echo '<h3>Nabbe Data</h3>';
-    var_dump($user);
+if ($user = get_user_id("FACEBOOK", $tokenMetadata->getUserId())) {
+    $user=get_user_uuid($user);
+    $jwt=createJWT($user);
+    $_SESSION["nabbe-jwt"] = $jwt;
+    header("Location: http://" . $_SERVER["HTTP_HOST"]);
 } else {
-    print "No nabbe found";
+    $_SESSION["service"] = "FACEBOOK";
+    $_SESSION["user_id"] = $tokenMetadata->getUserId();
+    //Redirect to sign in page
+    header("Location: http://" . $_SERVER["HTTP_HOST"] . "/new_user/");
 }
 
 
@@ -70,13 +70,4 @@ $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
 echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
 exit;
 }
-
-echo '<h3>Long-lived</h3>';
-var_dump($accessToken->getValue());
 }
-
-$_SESSION['fb_access_token'] = (string) $accessToken;
-
-// User is logged in with a long-lived access token.
-// You can redirect them to a members-only page.
-//header('Location: https://example.com/members.php');
