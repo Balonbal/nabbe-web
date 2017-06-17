@@ -2,5 +2,5 @@
     Options +FollowSymLinks
     RewriteEngine On
     RewriteCond %{REQUEST_URI} !php$
-    RewriteRule ^([^/.]*)/$ index.php?page=$1
+    RewriteRule ^([^/.]*)/?$ index.php?page=$1
 </IfModule>
