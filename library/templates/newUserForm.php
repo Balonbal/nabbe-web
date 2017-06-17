@@ -1,4 +1,4 @@
-<form action="new_user.php" method="POST" id="newUserForm" class="form-horizontal">
+<form action="http://<?=$_SERVER["HTTP_HOST"]?>/new_user/" method="POST" id="newUserForm" class="form-horizontal">
     <h2>Welcome to Nabbe</h2>
     <p class="well">Give us some info pls</p>
     <div class="form-group has-feedback">

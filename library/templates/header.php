@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="http://<?= $_SERVER["HTTP_HOST"] ?>/bootstrap/dist/css/bootstrap-social.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="http://<?= $_SERVER["HTTP_HOST"] ?>/js/network.js"></script>
+    <script src="http://<?= $_SERVER["HTTP_HOST"] ?>/js/nabbe.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js'></script>
+    <?php if (isset($page) && file_exists(LIBRARY_PATH . "/../public_html/js/" . $page . ".js")):?>
+    <script src="http://<?=$_SERVER["HTTP_HOST"]?>/js/<?=$page?>.js"></script>
+    <?php endif?>
     <?php if (isset($_SESSION["nabbe-jwt"])):?>
     <script type="text/javascript">
         var store = store || {};
