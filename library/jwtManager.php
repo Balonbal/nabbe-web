@@ -31,3 +31,17 @@ function decode_JWT($jwt) {
     $key = base64_decode($nabbe->jwt->key);
     return \Firebase\JWT\JWT::decode($jwt, $key, array("HS512"));
 }
+
+function verify_user($jwt) {
+    try {
+        if (!($jwt = decode_JWT($jwt))) {
+            header("HTTP/1.0 401 Unauthorized");
+            die();
+        }
+    } catch (UnexpectedValueException $e) {
+        header("HTTP/1.0 401 Unauthorized");
+        print(json_encode(["error" => "Please log in first"]));
+        die();
+    }
+    return $jwt;
+}

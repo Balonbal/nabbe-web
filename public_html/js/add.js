@@ -2,7 +2,7 @@ function appendList(friend) {
     //Assume presorted
     var el = $("<li></li>")
         .addClass("list-group-item")
-        .text(friend.name)
+        .text(friend.username)
         .append(
             $("<a>")
                 .prop("href", "#")
@@ -43,20 +43,16 @@ function sendRemoveRequest(friend) {
 }
 
 function fetchUsers(offset) {
-    //TODO, example response follows
-    return [
-        {name: "sly", accepted: true},
-        {name: "aksei", accepted: true},
-        {name: "hakun", accepted: false},
-        {name: "ice_poseidon", accepted: true},
-        {name: "me", accepted: false}
-    ];
+    sendRequest("http://nabbe.gabeorama.org/api/friends/list", function (data) {
+        $("#currentFriendList").empty();
+        data.forEach(function(friend) {
+            appendList(friend);
+        });
+    });
 }
 
 $(document).ready(function() {
-    fetchUsers(0).forEach(function (friend) {
-        appendList(friend);
-    })
+    fetchUsers(0);
 
 	/*var friends = ["Sly","Aksei","hakun","ice_poseidon","me","myself","I"];
 	const currentFriendList = $("#currentFriendList");
