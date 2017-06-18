@@ -45,7 +45,7 @@ function sendRemoveRequest(friend) {
 function fetchUsers(offset) {
     sendRequest("http://nabbe.gabeorama.org/api/friends/list", function (data) {
         $("#currentFriendList").empty();
-        data.forEach(function(friend) {
+        $.each(data, function(i, friend) {
             appendList(friend);
         });
     });
