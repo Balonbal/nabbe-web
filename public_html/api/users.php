@@ -8,12 +8,15 @@ include_once LIBRARY_PATH . "/userManager.php";
 require_once LIBRARY_PATH . "/jwtManager.php";
 $jwt = $_SERVER["HTTP_AUTHORIZATION"];
 $jwt = substr($jwt, strlen("Bearer "));
+if (empty($jwt) && isset($_SESSION["nabbe-jwt"]) && !empty($_SESSION["nabbe-jwt"])) {
+    $jwt = json_decode($_SESSION["nabbe-jwt"])->jwt;
+}
 
 if (isset($_GET["username"])) {
    if (!valid_username($_GET["username"])) {
         header("HTTP/1.0 400 Invalid username");
     } else if (!username_available($_GET["username"]) &&
-       (!isset($_SESSION["nabbe-jwt"]) || strtoupper($_SESSION["nabbe-jwt"]) == strtoupper($_GET["username"]))) {
+       (!isset($_SESSION["nabbe-jwt"]) || strtoupper(decode_JWT($jwt)->sub) != strtoupper($_GET["username"]))) {
         header("HTTP/1.0 400 Username taken");
     } else {
        header("HTTP/1.0 200 OK");
