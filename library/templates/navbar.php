@@ -17,6 +17,7 @@ include_once LIBRARY_PATH . "/jwtManager.php"; ?>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="http://<?=$_SERVER["HTTP_HOST"]?>/">Home</a></li>
+                <li><a href="http://<?=$_SERVER["HTTP_HOST"]?>/play/">Play</a></li>
                 <li><a href="http://<?=$_SERVER["HTTP_HOST"]?>/about/">About Nabbe</a></li>
             </ul>
             <p class="navbar-text navbar-right">
