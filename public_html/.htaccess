@@ -1,6 +1,15 @@
 <IfModule mod_rewrite.c>
     Options +FollowSymLinks
+
     RewriteEngine On
+
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
     RewriteCond %{REQUEST_URI} !php$
-    RewriteRule ^([^/.]*)/?$ index.php?page=$1
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([^/.]+)/([^/.]*)/?(.*) index.php?page=$1&action=$2&type=$3 [QSA,L]
+    RewriteRule ^([^/.]*)/?$ index.php?page=$1 [QSA]
+
 </IfModule>
