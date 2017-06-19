@@ -1,0 +1,47 @@
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-xs-12">
+                <h3>Start a new match!</h3>
+                <!-- Use the same friendslist as in /add/ -->
+            </div>
+
+            <div class="col-sm-6 col-xs-12">
+                <h3>Current matches:</h3>
+                <div class="list-group">
+
+                    <div style="height: 41px">
+                        <a href="Sly" class="list-group-item" style="width: 100%; float: left">
+                            <span>Match against Sly</span>
+                            <span style="position: absolute; right: 10%">Score 13-2</span>
+                        </a>
+                        <a href="Sly/delete/" style="position: absolute; right: 5%; margin-top: 10px;">
+                            <span class="glyphicon glyphicon-remove" style="font-size: 1.5em; color:black"></span>
+                        </a>
+                    </div>
+
+                    <div style="height: 41px">
+                        <a href="hakon" class="list-group-item" style="width: 100%; float: left">
+                            <span>Match against hakon</span>
+                            <span style="position: absolute; right: 10%">Score 3-11</span>
+                        </a>
+                        <a href="hakon/delete/" style="position: absolute; right: 5%; margin-top: 10px;">
+                            <span class="glyphicon glyphicon-remove" style="font-size: 1.5em; color:black"></span>
+                        </a>
+                    </div>
+
+                    <div style="height: 41px">
+                        <a href="aksei" class="list-group-item" style="width: 100%; float: left">
+                            <span>Match against aksei</span>
+                            <span style="position: absolute; right: 10%">Score 4-4</span>
+                        </a>
+                        <a href="aksei/delete/" style="position: absolute; right: 5%; margin-top: 10px;">
+                            <span class="glyphicon glyphicon-remove" style="font-size: 1.5em; color:black"></span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
