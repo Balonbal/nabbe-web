@@ -54,7 +54,7 @@ if ($user = get_user_id("FACEBOOK", $tokenMetadata->getUserId())) {
     $_SESSION["service"] = "FACEBOOK";
     $_SESSION["user_id"] = $tokenMetadata->getUserId();
     //Redirect to sign in page
-    header("Location: http://" . $_SERVER["HTTP_HOST"] . "/new_user.php");
+    header("Location: http://" . $_SERVER["HTTP_HOST"] . "/new_user/");
 }
 
 

@@ -1,5 +1,0 @@
-RewriteEngine On
-RewriteCond %{HTTP:Authorization} ^(.*)
-RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
-RewriteCond %{REQUEST_URI} !php$
-RewriteRule ^([^/.]+)/?([^/.]*) $1.php?action=$2 [QSA]

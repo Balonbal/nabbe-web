@@ -4,7 +4,9 @@ footer {
     font-weight: bold;
     font-size: .8em;
 }
-
 .list-group-item > a > span.fa, .list-group-item > span.fa {
     float: right;
+}
+.fixed-panel {
+	height: 60px;
 }
