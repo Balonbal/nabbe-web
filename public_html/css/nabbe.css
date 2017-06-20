@@ -6,6 +6,9 @@ footer {
 }
 
 #divSettingsBoxes {
-	/* Made by Tinus */
-	margin-bottom: 5%;
+    /* Made by Tinus */
+    margin-bottom: 5%;
+}
+.fixed-panel {
+	height: 60px;
 }
