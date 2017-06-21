@@ -85,8 +85,8 @@ $(document).ready(function () {
 			JSON.stringify(obj), "json"
 		).done(function(data) {
 			alert("New username: " + data.new_username);
-			}
-		).fail(function (data) {
+			$(".username").text(data.new_username);
+		}).fail(function (data) {
 			alert("Error updating username: " + JSON.parse(data.responseText).error);
         });
 
