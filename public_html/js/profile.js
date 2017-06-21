@@ -77,5 +77,19 @@ $(document).ready(function () {
 				}
 			}
 		}
-	});
+	}).submit(function (e) {
+		e.preventDefault();;
+		var data = $("#nameChangeForm").serializeArray();
+		var obj = {username: data[0]["value"]};
+		$.post($(this).prop("action"),
+			JSON.stringify(obj), "json"
+		).done(function(data) {
+			alert("New username: " + data.new_username);
+			}
+		).fail(function (data) {
+			alert("Error updating username: " + JSON.parse(data.responseText).error);
+        });
+
+		return false;
+    })
 });

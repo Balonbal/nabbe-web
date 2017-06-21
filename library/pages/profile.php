@@ -20,11 +20,11 @@
                 <h3> Account Settings </h3>
                 <div id="divSettingsBoxes">
                     <!-- Probably have to change new_user with change_user.php -->
-                    <form action="http://<?=$_SERVER["HTTP_HOST"]?>/api/profile.php?change=username" method="POST" id="nameChangeForm" class="form-horizontal">
+                    <form action="http://<?=$_SERVER["HTTP_HOST"]?>/api/profile/edit" method="POST" id="nameChangeForm" class="form-horizontal">
                         <div class="form-group has-feedback">
                             <label class="control-label col-sm-4">Change display name:</label>
                             <div class="input-group col-sm-8">
-                                <input type="text" maxlength="16" minlength="1" data-not-equals="username" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users.php" class="form-control" name="username" placeholder="New Username" required>
+                                <input id="username-field" type="text" maxlength="16" minlength="1" data-not-equals="username" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users.php" class="form-control" name="username" placeholder="New Username" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="help-block with-errors col-sm-offset-4">Please pick a alphanumeric username (1-16 chars)</div>

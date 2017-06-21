@@ -17,6 +17,20 @@ if (!isset($_REQUEST["type"]) || empty($_REQUEST["type"])) {
 }
 
 switch ($_REQUEST["type"]) {
+    case "get":
+        $uuid = $jwt->sub;
+        if (($data = json_decode(file_get_contents("php://input"))) && !empty($data->uuid)) {
+            $uuid = $data->uuid;
+        }
+
+        if ($result = get_profile($uuid)) {
+            print json_encode($result);
+            return;
+        } else {
+            header("HTTP/1.0 404 User Not Found");
+            print(json_encode(["error" => $uuid . " could not be found"]));
+            return;
+        }
     case "edit":
         if (!($changes = json_decode(file_get_contents("php://input")))) {
             header("HTTP/1.0 400 Bad Request");
