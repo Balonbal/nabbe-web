@@ -91,6 +91,19 @@
   margin-bottom: 0;
 }
 
+.fa-chevron-right {
+  -moz-transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+  float:right;
+}
+
+.down {
+  -ms-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  transform: rotate(90deg);
+}
 /*
  * Placeholder dashboard ideas
  */

@@ -71,7 +71,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#matches"><span class="fa fa-chevron-down"></span> Matches</a>
+                            <a data-toggle="collapse" href="#matches">Matches<span class="fa fa-chevron-right down"></span></a>
                         </h4>
                     </div>
                     <div id="matches" class="panel-collapse collapse in">
