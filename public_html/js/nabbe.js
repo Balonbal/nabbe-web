@@ -1,4 +1,7 @@
 $(document).ready(function () {
+});
+
+function populate() {
     if (typeof store !== "undefined") {
         if (typeof store.JWT.jwt !== "undefined") {
             store.jwtDecoded = parseJwt(store.JWT.jwt);
@@ -11,7 +14,7 @@ $(document).ready(function () {
             })
         }
     }
-});
+}
 
 function getBaseDomain() {
     return window.location.protocol + "//" + window.location.host;
