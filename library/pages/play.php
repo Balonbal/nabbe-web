@@ -66,12 +66,65 @@
 <div id="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
+            <div class="col-sm-3 col-md-2 panel-group sidebar collapse in" id="sidebar">
+                <h4><a data-toggle="collapse" href="#sidebar">Navbar</a></h4>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#matches"><span class="fa fa-chevron-down"></span> Matches</a>
+                        </h4>
+                    </div>
+                    <div id="matches" class="panel-collapse collapse in">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Geir</a>
+                            <a href="#" class="list-group-item">Tiniuses</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#game-requests"><span class="fa fa-chevron-right"></span> Game Requests</a>
+                        </h4>
+                    </div>
+                    <div id="game-requests" class="panel-collapse collapse">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Geir</a>
+                            <a href="#" class="list-group-item">Tiniuses</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#game-rooms"><span class="fa fa-chevron-right"></span> Game Rooms</a>
+                        </h4>
+                    </div>
+                    <div id="game-rooms" class="panel-collapse collapse">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Geir</a>
+                            <a href="#" class="list-group-item">Tiniuses</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success btn-block btn-lg" type="button">New Match</button>
+            </div>
+            <!--<div class="col-sm-3 col-md-2 sidebar">
+                <div class="panel">
+                    <div class="panel-header" data-toggle="collapse" data-target="#h1">
+                        Header 1
+                    </div>
+                    <div class="panel-body collapse" id="h1">
+                        <ul class="nav nav-sidebar">
+                            <li><a href="#">Reports</a></li>
+                            <li><a href="#">Analytics</a></li>
+                            <li><a href="#">Export</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <ul class="nav nav-sidebar">
                     <li class="active"><a href="#">Start a new match<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Export</a></li>
+
                 </ul>
                 <ul class="nav nav-sidebar">
                     <li><a href="">Nav item</a></li>
@@ -85,7 +138,7 @@
                     <li><a href="">One more nav</a></li>
                     <li><a href="">Another nav item</a></li>
                 </ul>
-            </div>
+            </div>-->
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">Match against Sly</h1>
                 <h3>Question 2/8</h3>

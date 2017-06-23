@@ -35,7 +35,7 @@
     left: 0;
     z-index: 1000;
     display: block;
-    padding: 20px;
+    padding: 0;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #f5f5f5;
@@ -78,6 +78,18 @@
   margin-top: 0;
 }
 
+.sidebar > .panel {
+  margin-top: 0 !important;
+}
+
+.sidebar > button {
+  position: absolute;
+  bottom: 3px;
+}
+
+.sidebar.panel-group {
+  margin-bottom: 0;
+}
 
 /*
  * Placeholder dashboard ideas
