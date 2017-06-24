@@ -139,26 +139,64 @@
                     <li><a href="">Another nav item</a></li>
                 </ul>
             </div>-->
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">Match against Sly</h1>
-                <h3>Question 2/8</h3>
-
-                <h2 class="sub-header">Which song contains these lyrics?</h2>
-                <div class="jumbotron col-sm-6 col-xs-12">
-                    <p class="lead text-center">Wake up<br>
-                                Grab a brush and put a little (makeup)<br>
-                                Grab a brush and put a little<br>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 text-center">
+                <!-- TODO find a better place to put this
+                <h1 class="page-header">Match against <span class="opponent">Geir</span> <small>Question <span class="question-number">1</span> of <span class="question-total">3</span></small></h1>
+                -->
+                <h1><span class="question-header">Which song contains these lyrics?</span></h1>
+                <div class="jumbotron">
+                    <p class="question-body">
+                        Wake up<br>
+                        Grab a brush and put a little (makeup)<br>
+                        Grab a brush and put a little<br>
+                    </p>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        30:00
+                    </div>
+                </div>
+                <div class="flexify">
+                    <div class="col-sm-5 jumbotron answer-box media">
+                        <div class="media-left"><span class="fa fa-question media-object"></span></div>
+                        <div class="media-body">
+                            A: <span id="option-A" class="option-text">Geirs sang</span>
+                        </div>
+                        <div class="media-right"><span class="fa fa-question media-object"></span></div>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-5 jumbotron answer-box media">
+                        <div class="media-left"><span class="fa fa-question media-object"></span></div>
+                        <div class="media-body">
+                            B: <span id="option-B" class="option-text">tinuseses sang</span>
+                        </div>
+                        <div class="media-right"><span class="fa fa-question media-object"></span></div>
+                    </div>
+                </div>
+                <div class="flexify">
+                    <div class="col-sm-5 jumbotron answer-box media">
+                        <div class="media-left"><span class="fa fa-question media-object"></span></div>
+                        <div class="media-body">
+                            C: <span id="option-C" class="option-text">Et annet alternativ</span>
+                        </div>
+                        <div class="media-right"><span class="fa fa-question media-object"></span></div>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-5 jumbotron answer-box media">
+                        <div class="media-left"><span class="fa fa-question media-object"></span></div>
+                        <div class="media-body">
+                            D: <span id="option-D" class="option-text">Jeg har faktisk ingen anelse om hva det riktfulle svaret er</span>
+                        </div>
+                        <div class="media-right"><span class="fa fa-question media-object"></span></div>
+                    </div>
                 </div>
 
-
-                <div class="row placeholders">
+                <!--<div class="row placeholders">
                     <div class="col-sm-6 col-xs-12">
                         <div class="col-xs-6 col-sm-6 placeholder">
-                            <!-- Do we want pictures for each alternative? or maybe we could make them all like questionmarks and have an animation when you choose one of the alternatives. turn them into like a checkmark if it was right or something? idk fam. -->
+                            <!-- Do we want pictures for each alternative? or maybe we could make them all like questionmarks and have an animation when you choose one of the alternatives. turn them into like a checkmark if it was right or something? idk fam.
                             <p>?</p>
                             <!--
                             <img src="http://www.clker.com/cliparts/d/c/0/d/1259089297665068165question%20mark%20clkerdotcom-md.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                            -->
+
                             <h4>Alternative 1</h4>
                             <span class="text-muted">Chop Suey</span>
                         </div>
@@ -168,7 +206,7 @@
                             <span class="text-muted">Numb</span>
                         </div>
                         <div class="col-xs-6 col-sm-6 placeholder">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                             <h4>Alternative 3</h4>
                             <span class="text-muted">Baby</span>
                         </div>
@@ -178,8 +216,7 @@
                             <span class="text-muted">Ora jeska bena</span>
                         </div>
                     </div>
-                </div>
-            <h2 class="sub-header">Section title</h2>
+                </div> -->
                 <p> need help? report bug etc maybe?</p>
             </div>
         </div>

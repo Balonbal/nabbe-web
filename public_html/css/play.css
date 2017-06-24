@@ -98,6 +98,34 @@
   float:right;
 }
 
+.flexify {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.answer-box {
+  margin-top: 0;
+  font-size: 1.3em;
+  background-color: rgba(57, 132, 255, 0.6);
+  cursor: pointer;
+
+  -webkit-transition: background 1s;
+  -moz-transition: background 1s;
+  -o-transition: background 1s;
+  transition: background 1s;
+}
+
+.selected {
+  background-color: #ff4500;
+}
+
+.answer-box > .fa-question:first-child {
+  float: left;
+}
+.answer-box > .fa-question:last-child {
+  float: right;
+}
+
 .down {
   -ms-transform:rotate(90deg);
   -moz-transform:rotate(90deg);
