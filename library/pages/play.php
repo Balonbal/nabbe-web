@@ -67,7 +67,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 panel-group sidebar collapse in" id="sidebar">
+                <!--
                 <h4><a data-toggle="collapse" href="#sidebar">Navbar</a></h4>
+                -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -107,7 +109,9 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success btn-block btn-lg" type="button">New Match</button>
+                <div class="panel panel-default">
+                    <button class="btn btn-success btn-block btn-lg" type="button">New Match</button>
+                </div>
             </div>
             <!--<div class="col-sm-3 col-md-2 sidebar">
                 <div class="panel">
@@ -212,8 +216,8 @@
                             <span class="text-muted">Ora jeska bena</span>
                         </div>
                     </div>
-                </div> -->
-                <p> need help? report bug etc maybe?</p>
+                </div>-->
+                <a href="#">Report error</a>
             </div>
         </div>
     </div>
