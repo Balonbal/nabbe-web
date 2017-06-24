@@ -145,14 +145,10 @@
                 -->
                 <h1><span class="question-header">Which song contains these lyrics?</span></h1>
                 <div class="jumbotron">
-                    <p class="question-body">
-                        Wake up<br>
-                        Grab a brush and put a little (makeup)<br>
-                        Grab a brush and put a little<br>
-                    </p>
+                    <p class="question-body"></p>
                 </div>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    <div id="timebar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                         30:00
                     </div>
                 </div>
@@ -160,14 +156,14 @@
                     <div class="col-sm-5 jumbotron answer-box media">
                         <div class="media-left"><span class="fa fa-question media-object"></span></div>
                         <div class="media-body">
-                            A: <span id="option-A" class="option-text">Geirs sang</span>
+                            A: <span id="option-1" class="option-text">g</span>
                         </div>
                         <div class="media-right"><span class="fa fa-question media-object"></span></div>
                     </div>
                     <div class="col-sm-offset-2 col-sm-5 jumbotron answer-box media">
                         <div class="media-left"><span class="fa fa-question media-object"></span></div>
                         <div class="media-body">
-                            B: <span id="option-B" class="option-text">tinuseses sang</span>
+                            B: <span id="option-2" class="option-text"></span>
                         </div>
                         <div class="media-right"><span class="fa fa-question media-object"></span></div>
                     </div>
@@ -176,14 +172,14 @@
                     <div class="col-sm-5 jumbotron answer-box media">
                         <div class="media-left"><span class="fa fa-question media-object"></span></div>
                         <div class="media-body">
-                            C: <span id="option-C" class="option-text">Et annet alternativ</span>
+                            C: <span id="option-3" class="option-text"></span>
                         </div>
                         <div class="media-right"><span class="fa fa-question media-object"></span></div>
                     </div>
                     <div class="col-sm-offset-2 col-sm-5 jumbotron answer-box media">
                         <div class="media-left"><span class="fa fa-question media-object"></span></div>
                         <div class="media-body">
-                            D: <span id="option-D" class="option-text">Jeg har faktisk ingen anelse om hva det riktfulle svaret er</span>
+                            D: <span id="option-4" class="option-text"></span>
                         </div>
                         <div class="media-right"><span class="fa fa-question media-object"></span></div>
                     </div>
