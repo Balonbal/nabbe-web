@@ -71,6 +71,9 @@
                 <h4><a data-toggle="collapse" href="#sidebar">Navbar</a></h4>
                 -->
                 <div class="panel panel-default">
+                    <button class="btn btn-success btn-block btn-lg" type="button">New Match</button>
+                </div>
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#matches">Matches<span class="fa fa-chevron-right down"></span></a>
@@ -108,9 +111,6 @@
                             <a href="#" class="list-group-item">Tiniuses</a>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <button class="btn btn-success btn-block btn-lg" type="button">New Match</button>
                 </div>
             </div>
             <!--<div class="col-sm-3 col-md-2 sidebar">
