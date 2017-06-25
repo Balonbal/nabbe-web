@@ -102,3 +102,21 @@ function username_available($username) {
     return $result;
 }
 
+function update_visit($uuid, $page) {
+    if ($mysqli = open_database()) {
+        if ($statement = $mysqli->prepare("SELECT id FROM USERS WHERE uuid=? LIMIT 1")) {
+            $statement->bind_param("s", $uuid);
+            $statement->execute();
+            $statement->bind_result($id);
+            if (!$statement->fetch()) return false;
+            $statement->close();
+
+            if ($statement = $mysqli->prepare("REPLACE INTO VISISTS (id, page) VALUES(?, ?)")) {
+                $statement->bind_param("is", $id, $page);
+                $statement->execute();
+                $statement->close();
+                $mysqli->close();
+            }
+        }
+    }
+}

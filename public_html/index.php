@@ -1,11 +1,31 @@
 <?php
 session_start();
 include_once realpath(dirname(__FILE__)) . "/../library/config/configuration.php";
+include_once LIBRARY_PATH . "/jwtManager.php";
+include_once LIBRARY_PATH . "/userManager.php";
+
+if (isset($_SERVER["HTTP_AUTHORIZATION"])) {
+    $jwt = $_SERVER["HTTP_AUTHORIZATION"];
+    $jwt = substr($jwt, strlen("Bearer "));
+} elseif (isset($_SESSION["nabbe-jwt"])) {
+    $jwt = $_SESSION["nabbe-jwt"];
+}
 
 $page = "index"; //Default
 
 if (isset($_REQUEST["page"]) && !empty($_REQUEST["page"])) {
     $page=$_REQUEST["page"];
+}
+
+//Update visit table
+if (isset($jwt)) {
+    try {
+        if (!$jwt = decode_JWT($jwt)) unset($jwt);
+        else update_visit($jwt->sub, $page);
+    } catch (Exception $e) {
+        unset($jwt);
+    }
+
 }
 
 //Fetch data
@@ -29,6 +49,7 @@ if (file_exists($fullpath)) {
 }
 //Do something else? -- should give our 404 page
 
-include_once TEMPLATES_PATH . "/footer.php"; ?>
+include_once TEMPLATES_PATH . "/footer.php";
+?>
 </body>
 </html>
