@@ -31,5 +31,5 @@
         populate();
     </script>
     <?php endif; ?>
-    <title>Nabbe - <?=$_SERVER["PHP_SELF"] ?></title>
+    <title><?=ucfirst($page)?> - Nabbe</title>
 </head>
