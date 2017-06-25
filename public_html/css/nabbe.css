@@ -5,6 +5,10 @@ footer {
     font-size: .8em;
 }
 
+#divSettingsBoxes {
+    /* Made by Tinus */
+    margin-bottom: 5%;
+}
 .fixed-panel {
 	height: 60px;
 }

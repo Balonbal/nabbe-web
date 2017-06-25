@@ -29,5 +29,9 @@ function decode_JWT($jwt) {
     $nabbe = get_config();
 
     $key = base64_decode($nabbe->jwt->key);
-    return \Firebase\JWT\JWT::decode($jwt, $key, array("HS512"));
+    try {
+        return \Firebase\JWT\JWT::decode($jwt, $key, array("HS512"));
+    } catch (Exception $e) {
+        return false;
+    }
 }

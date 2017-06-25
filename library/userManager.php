@@ -30,9 +30,8 @@ function get_user_uuid($user_id) {
             } else {
                 $result = false;
             }
-
-            $statement->close();
             $mysqli->close();
+            $statement->close();
             return $result;
         }
     }
@@ -81,8 +80,42 @@ function createUser($service_type, $service_id, $username) {
     throw new Exception("MYSQL Error");
 }
 
+function get_profile($uuid) {
+    if ($mysqli = open_database()) {
+        if ($statement = $mysqli->prepare("SELECT uuid, user_name FROM USERS WHERE uuid=?")) {
+            $statement->bind_param("s", $uuid);
+            $statement->execute();
+            $statement->bind_result($uid, $username);
+
+            $result = false;
+            if ($statement->fetch()) {
+                $result = ["uuid" => $uuid, "username" => $username];
+            }
+
+            $statement->close();
+            $mysqli->close();
+
+            return $result;
+        }
+    }
+}
+
 function valid_username($username) {
     return preg_match("/^\w{1,16}$/", $username) != false;
+}
+
+function change_username($username, $uuid) {
+    if ($mysqli = open_database()) {
+        if ($statement = $mysqli->prepare("UPDATE USERS SET user_name=? WHERE uuid=?")) {
+            $statement->bind_param("ss", $username, $uuid);
+            $statement->execute();
+            $statement->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+
+    throw new Exception("MYSQL error");
 }
 
 function username_available($username) {

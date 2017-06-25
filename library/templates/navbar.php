@@ -21,7 +21,7 @@ include_once LIBRARY_PATH . "/jwtManager.php"; ?>
             </ul>
             <p class="navbar-text navbar-right">
                 <?php if (isset($_SESSION["nabbe-jwt"])): ?>
-                    Logged in as <a class="navbar-link" href="http://<?=$_SERVER["HTTP_HOST"]?>/profile/"><span class="username"></span> </a>
+                    Logged in as <a class="navbar-link" href="http://<?=$_SERVER["HTTP_HOST"]?>/profile/"><span style="font-weight: bolder" class="username"></span></a>
                 <?php else: ?>
                 You are not logged in
                 <?php endif ?>

@@ -28,6 +28,7 @@
         $.ajaxSetup({
             headers: {"Authorization": "Bearer " + store.JWT.jwt}
         });
+        populate();
     </script>
     <?php endif; ?>
     <title>Nabbe - <?=$_SERVER["PHP_SELF"] ?></title>
