@@ -24,7 +24,7 @@
                         <div class="form-group has-feedback">
                             <label class="control-label col-sm-4">Change display name:</label>
                             <div class="input-group col-sm-8">
-                                <input id="username-field" type="text" maxlength="16" minlength="1" data-not-equals="username" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users.php" class="form-control" name="username" placeholder="New Username" required>
+                                <input id="username-field" type="text" maxlength="16" minlength="1" data-not-equals="username" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users/valid" class="form-control" name="username" placeholder="New Username" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="help-block with-errors col-sm-offset-4">Please pick a alphanumeric username (1-16 chars)</div>

@@ -4,7 +4,7 @@ include_once realpath(dirname(__FILE__)) . "/../library/config/configuration.php
 include_once LIBRARY_PATH . "/jwtManager.php";
 include_once LIBRARY_PATH . "/userManager.php";
 
-if (isset($_SERVER["HTTP_AUTHORIZATION"])) {
+if (isset($_SERVER["HTTP_AUTHORIZATION"]) && !empty($_SERVER["HTTP_AUTHORIZATION"])) {
     $jwt = $_SERVER["HTTP_AUTHORIZATION"];
     $jwt = substr($jwt, strlen("Bearer "));
 } elseif (isset($_SESSION["nabbe-jwt"])) {

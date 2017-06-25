@@ -4,7 +4,7 @@
     <div class="form-group has-feedback">
         <label class="control-label col-sm-2" for="username">Username:</label>
         <div class="col-sm-10 input-group">
-            <input type="text" maxlength="16" minlength="1" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users.php" class="form-control" name="username" required>
+            <input type="text" maxlength="16" minlength="1" pattern="^[_A-z0-9]{1,16}" data-remote="/api/users/both" class="form-control" name="username" required>
             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
         </div>
         <div class="help-block with-errors col-sm-offset-2">Please pick a alphanumeric username (1-16 chars)</div>

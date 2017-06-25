@@ -1,17 +1,13 @@
 <?php
-$jwt = $_SERVER["HTTP_AUTHORIZATION"];
-$jwt = substr($jwt, strlen("Bearer "));
-require_once LIBRARY_PATH . "/userManager.php";
-require_once LIBRARY_PATH . "/jwtManager.php";
 
-if (!($jwt = decode_JWT($jwt))) {
+if (!isset($jwt)) {
     header("HTTP/1.0 401 Unauthorized");
     print(json_encode(["error" => "Please log in first"]));
     return;
 }
 
 if (!isset($_REQUEST["type"]) || empty($_REQUEST["type"])) {
-    header("HTTP/1.0 501 Not Implemented");
+    header("HTTP/1.0 404 Not Found");
     print(json_encode(["error" => "Request type does not exist"]));
     return;
 }
