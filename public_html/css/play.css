@@ -119,16 +119,21 @@
   -o-transition: background 1s;
   transition: background 1s;
 }
+.answer-box.wrong {
+  background-color: rgba(255, 10, 10, 0.7);
+}
+
+.answer-box.correct {
+  background-color: rgba(10, 255, 10, 0.6);
+}
 
 .selected {
   background-color: #ff4500;
+  border: 2px solid #00008b;
 }
 
-.answer-box > .fa-question:first-child {
-  float: left;
-}
-.answer-box > .fa-question:last-child {
-  float: right;
+.answer-box > div > .fa {
+  font-size: 2em;
 }
 
 .down {

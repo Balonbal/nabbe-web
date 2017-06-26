@@ -5,8 +5,25 @@ var example = {
         {id: 64, text: "tinuseses sang"},
         {id: 84, text: "Et annet alternativ"},
         {id: 115, text: "Jeg har faktisk ingen anelse om hva det riktfulle svaret er"}
-    ], time: 30
+    ], time: 3
 };
+var selected = 0;
+function checkAnswer() {
+    //TODO get correctness from server
+    var correct = (Math.random() >= 0.5);
+    var correctAnswer = Math.floor(Math.random() * 4) + 1;
+    console.log(correctAnswer);
+
+    $(".answer-box").addClass("wrong").css({cursor: "not-allowed"})
+        .find(".fa")
+        .removeClass("fa-question").addClass("fa-times");
+    $("#option-" + (correctAnswer + 1)).parents(".answer-box")
+        .removeClass("wrong").addClass("correct")
+        .find(".fa")
+        .removeClass("fa-times").addClass("fa-check");
+
+}
+
 
 function loadQuestion(question) {
     $(".question-body").html(question.text);
@@ -22,7 +39,9 @@ function loadQuestion(question) {
                 $(this).text(timify(s * question.time / 100));
                 if (Math.abs(s - 50) < 0.1) $(this).addClass("progress-bar-warning");
                 if (Math.abs(s - 25) < 0.1) $(this).removeClass("progress-bar-warning").addClass("progress-bar-danger");
-            }, easing: "linear"})
+            }, easing: "linear",
+            complete: checkAnswer}
+        )
 }
 
 function timify(num) {
@@ -37,6 +56,9 @@ $(document).ready(function () {
         //Reset selected box
         $(".answer-box.selected").removeClass("selected");
         $(this).addClass("selected");
+        selected = parseInt($(this).find(".option-text").prop("id").substr(("option-").length));
+
+        //TODO Submit selection
     });
 
     loadQuestion(example);
