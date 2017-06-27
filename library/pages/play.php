@@ -68,6 +68,26 @@
         <div class="row">
             <?php include_once TEMPLATES_PATH . "/sidebar.php" ?>
             <?php include_once TEMPLATES_PATH . "/game_screen.php" ?>
+            <div id="game_splash" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 text-center">
+                <h1 class="page-header">Playing against <span class="opponent">{{}}</span></h1>
+                <div class="row" id="question_stats">
+                    <div class="col-sm-2 jumbotron wrong">Q1</div>
+                    <div class="col-sm-2 jumbotron correct">Q2</div>
+                    <div class="col-sm-2 jumbotron correct">Q3</div>
+                    <div class="col-sm-2 jumbotron">Q4</div>
+                    <div class="col-sm-2 jumbotron">Q5</div>
+                    <div class="col-sm-2 jumbotron">Q6</div>
+                </div>
+                <div class="progress">
+                    <div id="completeness" class="progress-bar progress-bar-striped active" role="progressbar" style="width: 50%">
+                        3/6 Questions
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-danger btn-lg col-sm-2 col-sm-offset-2"><span class="fa fa-ban"></span> Forfeit match</button>
+                    <button class="btn btn-success btn-lg col-sm-2 col-sm-offset-4">Next Question <span class="fa fa-forward"></span></button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

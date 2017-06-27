@@ -41,6 +41,9 @@
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
   }
+  footer {
+    margin-left: 16.7%
+  }
 }
 
 .progress-bar {
@@ -119,11 +122,11 @@
   -o-transition: background 1s;
   transition: background 1s;
 }
-.answer-box.wrong {
+.wrong {
   background-color: rgba(255, 10, 10, 0.7);
 }
 
-.answer-box.correct {
+.correct {
   background-color: rgba(10, 255, 10, 0.6);
 }
 
