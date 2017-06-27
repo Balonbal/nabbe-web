@@ -52,7 +52,7 @@ if ($client->getAccessToken()) {
             $_SESSION["service"] = "GOOGLE";
             $_SESSION["user_id"] = $token_data["sub"];
             //Redirect to sign in page
-            header("Location: http://" . $_SERVER["HTTP_HOST"] . "/new_user.php");
+            header("Location: http://" . $_SERVER["HTTP_HOST"] . "/new_user/");
         endif;
     endif ?>
 </div>

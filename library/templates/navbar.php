@@ -21,13 +21,13 @@ include_once LIBRARY_PATH . "/jwtManager.php"; ?>
             </ul>
             <p class="navbar-text navbar-right">
                 <?php if (isset($_SESSION["nabbe-jwt"])): ?>
-                    Logged in as <a class="navbar-link" href="http://<?=$_SERVER["HTTP_HOST"]?>/profile"><?=decode_JWT(json_decode($_SESSION["nabbe-jwt"])->jwt)->sub;?></a>
+                    Logged in as <a class="navbar-link" href="http://<?=$_SERVER["HTTP_HOST"]?>/profile/"><span style="font-weight: bolder" class="username"></span></a>
                 <?php else: ?>
                 You are not logged in
                 <?php endif ?>
             </p>
             <?php if (isset($_SESSION["nabbe-jwt"])): ?>
-            <form action="http://<?=$_SERVER["HTTP_HOST"]?>/logout.php"><button type="submit" class="btn btn-info navbar-btn navbar-right">Log out</button></form>
+            <form action="http://<?=$_SERVER["HTTP_HOST"]?>/logout/"><button type="submit" class="btn btn-info navbar-btn navbar-right">Log out</button></form>
             <?php endif ?>
         </div>
     </div>
