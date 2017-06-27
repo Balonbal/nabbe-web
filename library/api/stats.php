@@ -18,9 +18,16 @@ switch ($_REQUEST["type"]) {
                 if (!$statement->fetch()) $count = 0;
 
                 $statement->close();
+
+                $statement = $mysqli->prepare("SELECT COUNT(*) FROM USERS");
+                $statement->execute();
+                $statement->bind_result($total);
+                if (!$statement->fetch()) $total = 0;
+
+                $statement->close();
                 $mysqli->close();
 
-                print(json_encode(["active_users" => $count]));
+                print(json_encode(["active_users" => $count, "total_users" => $total]));
                 return;
             }
         }
