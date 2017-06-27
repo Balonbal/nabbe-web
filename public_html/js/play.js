@@ -26,6 +26,7 @@ function checkAnswer() {
 
 
 function loadQuestion(question) {
+    $("#game-screen").removeClass("hidden");
     $(".question-body").html(question.text);
     $.each(question.options, function (i, opt) {
         $("#option-" + (i + 1)).text(opt.text);
@@ -61,5 +62,5 @@ $(document).ready(function () {
         //TODO Submit selection
     });
 
-    loadQuestion(example);
+    //loadQuestion(example);
 });
